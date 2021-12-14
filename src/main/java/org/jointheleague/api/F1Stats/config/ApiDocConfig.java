@@ -1,4 +1,4 @@
-package org.jointheleague.level7.cheetah.config;
+package org.jointheleague.api.F1Stats.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
