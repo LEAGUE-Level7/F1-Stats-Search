@@ -1,8 +1,8 @@
 package org.jointheleague.api.F1Stats.repository.dto;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import javax.annotation.Generated;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -10,19 +10,36 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+"MRData"
+})
+@Generated("jsonschema2pojo")
 public class LocResponse {
 
-    private List<Constructor> results = null;
+@JsonProperty("MRData")
+private MRData mRData;
+@JsonIgnore
+private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("results")
-    public List<Constructor> getResults() {
-        return results;
-    }
+@JsonProperty("MRData")
+public MRData getMRData() {
+return mRData;
+}
 
-    @JsonProperty("results")
-    public void setResults(List<Constructor> results) {
-    	System.out.println("dsyhfgtygjsfhjgfjs");
-        this.results = results;
-    }
+@JsonProperty("MRData")
+public void setMRData(MRData mRData) {
+this.mRData = mRData;
+}
+
+@JsonAnyGetter
+public Map<String, Object> getAdditionalProperties() {
+return this.additionalProperties;
+}
+
+@JsonAnySetter
+public void setAdditionalProperty(String name, Object value) {
+this.additionalProperties.put(name, value);
+}
 
 }

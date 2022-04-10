@@ -7,6 +7,7 @@ import io.swagger.annotations.ApiResponses;
 import java.util.List;
 
 import org.jointheleague.api.F1Stats.repository.dto.Constructor;
+import org.jointheleague.api.F1Stats.repository.dto.MRData;
 import org.jointheleague.api.F1Stats.service.LocService;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.CollectionUtils;
@@ -30,14 +31,13 @@ public class LocController {
             response = String.class)
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Result(s) found"),
-            @ApiResponse(code = 404, message = "That's not good (bad year?)")
+            @ApiResponse(code = 404, message = "That's not ideal (maybe bad year?)")
     })
-    public List<Constructor> getResults(@RequestParam(value="year") String year){
-        List<Constructor> results = locService.getResults(year);
-        System.out.println(results);
-        if(CollectionUtils.isEmpty(results)){
+    public MRData getResults(@RequestParam(value="year") String year){
+    	MRData results = locService.getResults(year);
+    	if(results == null || results.getTotal().equals("0")){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Result(s) not found.");
         }
-        return results;
+        return locService.getResults(year);
     }
 }
