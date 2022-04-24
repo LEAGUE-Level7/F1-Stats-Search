@@ -4,12 +4,12 @@ plugins {
 	id 'java'
 }
 
-group = 'org.jointheleague.api.cheetah'
+group = 'org.jointheleague.api'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '8'
 
 repositories {
-	mavenCentral()
+	jcenter()
 }
 
 dependencies {
@@ -26,3 +26,27 @@ dependencies {
 test {
 	useJUnitPlatform()
 }
+
+sourceSets {
+	intTest {
+		compileClasspath += sourceSets.main.output
+		runtimeClasspath += sourceSets.main.output
+	}
+}
+
+configurations {
+	intTestImplementation.extendsFrom testImplementation
+	intTestRunTimeOnly.extendsFrom runtimeOnly
+}
+
+task intTest(type: Test) {
+	useJUnitPlatform()
+	description = 'Runs the integration tests.'
+	group = 'verification'
+
+	testClassesDirs = sourceSets.intTest.output.classesDirs
+	classpath = sourceSets.intTest.runtimeClasspath
+	shouldRunAfter test
+}
+
+check.dependsOn intTest

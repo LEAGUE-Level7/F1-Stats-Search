@@ -20,6 +20,10 @@ public class LocRepository {
                 .baseUrl(baseUrl)
                 .build();
     }
+    
+    public LocRepository(WebClient webClientMock) {
+        this.webClient = webClientMock;
+    }
 
     public MRData getResults(String year) {
         return webClient.get()

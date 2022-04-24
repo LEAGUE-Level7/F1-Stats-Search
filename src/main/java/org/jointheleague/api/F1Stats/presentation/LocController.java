@@ -35,7 +35,7 @@ public class LocController {
     })
     public MRData getResults(@RequestParam(value="year") String year){
     	MRData results = locService.getResults(year);
-    	if(results == null || results.getTotal().equals("0")){
+    	if(results == null || results.getConstructorTable().getConstructors().size() == 0){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Result(s) not found.");
         }
         return locService.getResults(year);
