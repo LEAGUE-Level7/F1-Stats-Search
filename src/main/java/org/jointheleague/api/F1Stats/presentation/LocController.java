@@ -11,6 +11,7 @@ import org.jointheleague.api.F1Stats.repository.dto.MRData;
 import org.jointheleague.api.F1Stats.service.LocService;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.CollectionUtils;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,6 +26,7 @@ public class LocController {
         this.locService = locService;
     }
 
+    @CrossOrigin()
     @GetMapping("/searchLocResults")
     @ApiOperation(value = "Shows Constructors for the given year",
 //            notes = "Response may include multiple Result values.",

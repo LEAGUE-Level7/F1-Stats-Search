@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @Controller
 public class HomeController {
+	@CrossOrigin()
     @GetMapping("/")
     @ResponseStatus(HttpStatus.MOVED_PERMANENTLY)
     public String home() {
